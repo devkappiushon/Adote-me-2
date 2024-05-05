@@ -1,0 +1,24 @@
+Models é uma área que serve como o banco de dados da nossa aplicação, nela será utilizada as ideias que teremos ao longo do desenvolvimento no framework web
+
+para o banco de dados, do adotante será interessante seguir:
+{
+    nome completo
+    idade (10/10/2000)
+    número de telefone ((81)9XXXX-XXXX)
+    cpf
+}
+
+BD ANIMAIS
+{
+    nome
+    idade
+    raça
+    cor
+    sexo
+    tamanho
+    esterilizado
+    tamanho
+    localização
+    foto
+    Breve Descrição
+}
