@@ -17,7 +17,7 @@ BD ANIMAIS
     sexo
     tamanho
     esterilizado
-    tamanho
+    porte
     localização
     foto
     Breve Descrição
