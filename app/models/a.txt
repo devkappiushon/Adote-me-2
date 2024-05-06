@@ -15,7 +15,6 @@ BD ANIMAIS
     raça
     cor
     sexo
-    tamanho
     esterilizado
     porte
     localização
