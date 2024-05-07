@@ -13,12 +13,28 @@ class Animal(db.Model):
     foto = db.Column(db.String(200))
 
     def __init__(self, nome, especie, cor, idade, descricao, foto):
+        #animal("amora", "rotwalley", "branco", "12",...)
         self.nome= nome
         self.especie= especie
         self.cor= cor
         self.idade= idade
         self.descricao= descricao
         self.foto= foto
+#forma +elegante de mostrar dados
+    def __repr__(self):
+        return "<Animal %r>" % self.nome
+
+class Post(db.Model):
+    __tablename__ = "posts"
+
+    id = db.column(db.Integer, primary_key=True)
+    content = db.column(db.text)
+    id_user = db.column(db.integer, db.ForeignKey("Animal.id"))
+
+    user= db.relationship("user", foreign_keys=animal_id)
+
+
+    
 
 
 
