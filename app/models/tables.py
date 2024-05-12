@@ -31,7 +31,10 @@ class Post(db.Model):
     content = db.column(db.text)
     id_user = db.column(db.integer, db.ForeignKey("Animal.id"))
 
-    user= db.relationship("user", foreign_keys=animal_id)
+    user= db.relationship("user", foreign_keys= animal_id)
+    def __init__(self, content, user_id):
+        self.content = content
+        self.user_id = user_id
 
 
     

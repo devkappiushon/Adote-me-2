@@ -4,8 +4,8 @@ para o banco de dados, do adotante será interessante seguir:
 {
     nome completo
     idade (10/10/2000)
-    número de telefone ((81)9XXXX-XXXX)
-    cpf
+    email
+    senha e confirmação
 }
 
 BD ANIMAIS
