@@ -1,5 +1,17 @@
-from flask_script import Manager
+{ {from flask_script import Manager
 from flask_migrate import migrate, MigrateCommand
 
-mirate= Migrate(app,db)
-manager= Manager(app)
+migrate= Migrate(app,db)
+manager= Manager(app) }} - Não existe Mais
+
+#tava dando problema
+from app.models import tables
+pass
+from app.controllers import default
+pass
+
+#app.cli.command
+@app.cli.command("db")
+def migrate_command():
+    # Seu código de migração aqui
+    pass

@@ -22,10 +22,9 @@ class User(db.Model):
 # Classe teste
 class Post(db.Model):
     __tablename__ = "posts"
-
-    id = db.column(db.Integer, primary_key=True)
-    content = db.column(db.text)
-    user_id = db.column(db.integer, db.ForeignKey("users.id"))
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     user= db.relationship("animal", foreign_keys= user_id)
     def __init__(self, content, user_id):
@@ -40,7 +39,7 @@ class Post(db.Model):
 class Follow(db.Model):
     __tablename__ = "follow"
 
-    id =db.column(db.Integer, primary_key= True)
+    id =db.Column(db.Integer, primary_key= True)
     user_id= db.Column(db.Integer, db.ForeignKey('users.id'))
     follower_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
