@@ -9,6 +9,6 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 lm = LoginManager(app)
 
-from controllers import default
+from app.controllers import default
 
 

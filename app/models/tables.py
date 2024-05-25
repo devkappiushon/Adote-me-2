@@ -26,7 +26,7 @@ class Post(db.Model):
     content = db.Column(db.Text)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    user= db.relationship("animal", foreign_keys= user_id)
+    user= db.relationship("User", foreign_keys= user_id)
     def __init__(self, content, user_id):
         self.content = content
         self.user_id = user_id
