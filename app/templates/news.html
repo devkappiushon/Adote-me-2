@@ -389,7 +389,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-4">
-                        <img src="images/logo.png" class="logo img-fluid" alt="">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -476,11 +476,12 @@ https://templatemo.com/tm-581-kind-heart-charity
         </footer>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/counter.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
 
     </body>
 </html>
