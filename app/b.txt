@@ -15,3 +15,21 @@ pass
 def migrate_command():
     # Seu código de migração aqui
     pass
+
+
+
+from flask_login import LoginManager
+lm = LoginManager(app)
+
+
+
+@app.route("/adocao")
+def index():
+    return render_template("index.html")
+pass
+
+
+@app.route("/cadastro")
+def index():
+    return 
+pass
