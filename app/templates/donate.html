@@ -10,11 +10,9 @@
         <title>Kind Heart Charity - Donation</title>
 
         <!-- CSS FILES -->        
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-
-        <link href="css/templatemo-kind-heart-charity.css" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/templatemo-kind-heart-charity.css') }}" rel="stylesheet">
 <!--
 
 TemplateMo 581 Kind Heart Charity
@@ -76,7 +74,7 @@ https://templatemo.com/tm-581-kind-heart-charity
         <nav class="navbar navbar-expand-lg bg-light shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.html">
-                    <img src="images/logo.png" class="logo img-fluid" alt="">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
                     <span>
                         Kind Heart Charity
                         <small>Non-profit Organization</small>
@@ -90,23 +88,23 @@ https://templatemo.com/tm-581-kind-heart-charity
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_1">Home</a>
+                            <a class="nav-link click-scroll" href="/index#section_1">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_2">About</a>
+                            <a class="nav-link click-scroll" href="/index#section_2">About</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_3">Causes</a>
+                            <a class="nav-link click-scroll" href="/index#section_3">Causes</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link click-scroll" href="index.html#section_4">Volunteer</a>
+                            <a class="nav-link click-scroll" href="/index#section_4">Volunteer</a>
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link click-scroll dropdown-toggle" href="index.html#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
+                            <a class="nav-link click-scroll dropdown-toggle" href="/index#section_5" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
 
                             <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
                                 <li><a class="dropdown-item" href="news.html">News Listing</a></li>
@@ -120,7 +118,7 @@ https://templatemo.com/tm-581-kind-heart-charity
                         </li>
 
                         <li class="nav-item ms-3">
-                            <a class="nav-link custom-btn custom-border-btn btn" href="donate.html">Donate</a>
+                            <a class="nav-link custom-btn custom-border-btn btn" href="/doar">Donate</a>
                         </li>
                     </ul>
                 </div>
@@ -277,7 +275,7 @@ https://templatemo.com/tm-581-kind-heart-charity
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-12 mb-4">
-                        <img src="images/logo.png" class="logo img-fluid" alt="">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
                     </div>
 
                     <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -364,11 +362,11 @@ https://templatemo.com/tm-581-kind-heart-charity
         </footer>
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.sticky.js"></script>
-        <script src="js/counter.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/counter.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom.js') }}"></script>
 
     </body>
 </html>
