@@ -55,3 +55,45 @@ def teste(info):
     return "ok"
 
 
+# Classe teste
+class Post(db.Model):
+    __tablename__ = "posts"
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    user= db.relationship("User", foreign_keys= user_id)
+    def __init__(self, content, user_id):
+        self.content = content
+        self.user_id = user_id
+
+    def __repr__(self):
+        return "<post %r>" % self.id
+
+
+with app.app_context():
+    @app.route("/cadastro", methods=["GET", "POST"])
+    def cadastro():
+        form = RegistrationForm()
+        if form.validate_on_submit():
+            if request.method == "POST":
+                name= request.form['name']
+                email= request.form['email']
+                password= request.form['password']
+                user= User(name, email, password)
+                db.session.add(user)
+                db.session.commit()
+        return render_template("cadastro.html", form=form)
+    redirect(url_for("login"))
+
+
+
+ user = User.query.filter_by(username=form.username.data).first()
+        if user and user.password == form.data.password:
+            flash('Entrada bem sucedida')
+        else:
+            flash('Entrada Inválida')
+    else:
+        print(form.errors)
+        
+    return render_template("login2.html", form=form)
