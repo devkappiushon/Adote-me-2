@@ -43,3 +43,15 @@ pass
                     <input type="password" id="password" class="form-control" required>
                 </div>
                 <button type="submit" class="custom-btn">Entrar</button>
+
+
+
+@app.route("/teste/<info>")
+@app.route("/teste", defaults={"info": None})
+def teste(info):
+    r= User.query.filter_by(username="jp").first()
+    db.session.delete(r)
+    db.session.commit()
+    return "ok"
+
+

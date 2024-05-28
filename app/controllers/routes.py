@@ -27,14 +27,3 @@ def cadastro():
 def doar():
     return render_template("donate.html")
 
-
-@app.route("/teste/<info>")
-@app.route("/teste", defaults={"info": None})
-def teste(info):
-    i= User("jp", "1234", "joão", "kkkkk@gmail.com")
-    db.session.add(i)
-    db.session.commit()
-    return "ok"
-
-
-
