@@ -44,3 +44,104 @@ class Animal(db.Model):
     def __repr__(self):
         return "<Animal %r>" % self.nome
 
+
+
+
+class RegistrationForm(FlaskForm):
+    name = StringField("nome", validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField("password", validators=[DataRequired()])
+    submit = SubmitField('Register')
+
+
+
+
+<form action="" method="POST">
+                {{form.csrf_token}}
+                <div class="form-group">
+                    <label>Nome</label> <br>
+                    {{form.name(class="form-control", placeholder="Digite seu Nome")}}
+                </div>
+                <div class="form-group">
+                    <label>Email</label><br>
+                    {{form.email(class="form-control")}}
+                        {% if form.email.errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {form.email.errors}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label>Password</label><br>
+                    {{form.password(class="form-control")}}
+                </div>
+                
+                <button type="submit" class="custom-btn">Cadastrar
+                </button>
+
+            </form>
+
+
+<form action='' method="POST">
+    {{ form.hidden_tag() }}
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>{{ form.name.label }}</label>
+                {{ form.name(class="form-control") }}
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>{{ form.email.label }}</label>
+                {{ form.email(class="form-control") }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>{{ form.password.label }}</label>
+                {{ form.password(class="form-control") }}
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label>{{ form.confirm.label }}</label>
+                {{ form.confirm(class="form-control") }}
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form.accept_tos() }} {{ form.accept_tos.label }}
+    </div>
+    <button type="submit" class="custom-btn">Submit</button>
+</form>
+
+
+                        <span class="text-danger">Insira um endereço de e-mail válido.</span>
+                    {% endfor %}
+
+
+
+@login_required
+
+
+
+@app.route('/anunciar', methods=['GET', 'POST'])
+def register_animal():
+    form = AnimalForm()
+    if form.validate_on_submit():
+        foto = form.foto.data
+        animal = Animal(
+            nome=form.nome.data,
+            especie=form.especie.data,
+            cor=form.cor.data,
+            idade=form.idade.data,
+            descricao=form.descricao.data,
+            esterilizado=form.esterilizado.data
+        )
+        db.session.add(animal)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('registro.html', form=form)

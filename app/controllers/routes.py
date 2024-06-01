@@ -1,9 +1,11 @@
 #aqui são os routes (caminhos)
 from flask import render_template, flash, redirect, url_for, request
 from app import app, db
-from flask_login import login_user, logout_user
-from app.models.tables import User
-from app.models.forms import LoginForm, RegistrationForm
+from flask_login import login_user, logout_user, login_required, current_user
+from app.models.tables import User, Animal
+from app.models.forms import LoginForm, RegistrationForm, AnimalForm
+from werkzeug.utils import secure_filename
+import os
 
 @app.route("/")
 @app.route("/index")
@@ -51,5 +53,33 @@ def doar():
 def logout():
     logout_user()
     return redirect(url_for("index"))
+
+@app.route('/anunciar', methods=['GET', 'POST'])
+def register_animal():
+    form = AnimalForm()
+    if form.validate_on_submit():
+        foto = form.foto.data
+        foto_filename = secure_filename(foto.filename)
+        foto.save(os.path.join(app.config['UPLOAD_FOLDER'], foto_filename))
+        animal = Animal(
+            nome=form.nome.data,
+            especie=form.especie.data,
+            cor=form.cor.data,
+            idade=form.idade.data,
+            descricao=form.descricao.data,
+            esterilizado=form.esterilizado.data,
+            foto=foto_filename
+        )
+        db.session.add(animal)
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('registro.html', form=form)
+
+
+@app.route('/adotar')
+def adotar():
+    animals = Animal.query.all()
+    return render_template('adotar.html', animals=animals)
+
 
 

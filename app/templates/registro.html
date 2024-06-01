@@ -1,0 +1,60 @@
+<!--/anunciar "tela de registro de animal, com formulário "-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADOTEMAIS</title>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <h2>Cadastre Seu Animal</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    <label>{{ form.nome.label }}</label>
+                    {{ form.nome(class="form-control") }}
+                    {% for error in form.nome.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.especie.label }}</label>
+                    {{ form.especie(class="form-control") }}
+                    {% for error in form.especie.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.cor.label }}</label>
+                    {{ form.cor(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.idade.label }}</label>
+                    {{ form.idade(class="form-control") }}
+                    {% for error in form.idade.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.descricao.label }}</label>
+                    {{ form.descricao(class="form-control") }}
+                    {% for error in form.descricao.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.foto.label }}</label>
+                    {{ form.foto(class="form-control-file") }}
+                    {% for error in form.foto.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form.esterilizado() }} {{ form.esterilizado.label }}
+                </div>
+                <button type="submit" class="custom-btn">Cadastrar</button>
+            </form>
+</body>
+</html>

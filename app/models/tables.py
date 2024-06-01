@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     __tablename__= "users"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(35), nullable=False)
-    email = db.Column(db.Integer, nullable=False, unique=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     
     @property
@@ -42,7 +42,32 @@ class User(db.Model, UserMixin):
 
     def verify_password(self, pwd):
         return check_password_hash(self.password, pwd)
+    
 
+
+
+class Animal(db.Model):
+    __tablename__= "animal" #nome da tabela já definida
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(20), nullable=False)
+    especie = db.Column(db.String(50), nullable=False)
+    cor = db.Column(db.String(50), nullable=False)
+    idade = db.Column(db.Integer, nullable=False)
+    descricao = db.Column(db.Text, nullable=False)
+    esterilizado = db.Column(db.Boolean)
+    foto = db.Column(db.String(200), nullable=False)
+
+    def __init__(self, nome, especie, cor, idade, descricao, foto, esterilizado):
+        #animal("amora", "rotwalley", "branco", "12",...)
+        self.nome= nome
+        self.especie= especie
+        self.cor= cor
+        self.idade= idade
+        self.descricao= descricao
+        self.esterilizado= esterilizado
+        self.foto= foto
+    def __repr__(self):
+        return "<Animal %r>" % self.nome
     
 
 
