@@ -1,19 +1,213 @@
-<!--Todos os animais disponíveis-->
+
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Animais Cadastrados</title>
-</head>
-<body>
-    <h1>Animais Cadastrados</h1>
-    <ul>
-        {% for animal in animais %}
-            <li>
-                <img src="{{ animal.foto }}" alt="{{ animal.nome }}">
-                <h2>{{ animal.nome }}</h2>
-                <p>{{ animal.descricao }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='uploads/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='uploads/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='uploads/favicon-16x16.png') }}">
+        <title>ADOTEMAIS</title>
+        <!-- CSS FILES -->
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+        <style>
+            .row {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            }
+            .animal-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 30px; 
+                margin-bottom: 30px;
+            }
+            .animal-card, .add-pet-card {
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                width: 300px;
+                text-align: center;
+                cursor: pointer;
+            }
+            .animal-image {
+                width: 100%;
+                border-radius: 5px;
+            }
+            form {
+                text-align: center;
+                margin-top: 20px;
+            }
+            form input[type="text"] {
+                padding: 8px;
+                margin-right: 10px;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                font-size: 16px;
+            }
+            form input[type="submit"] {
+                padding: 8px 20px;
+                border-radius: 5px;
+                border: none;
+                background-color: #333;
+                color: #fff;
+                cursor: pointer;
+                font-size: 16px;
+            }
+            /* Estilos para o botão de adicionar */
+            .add-pet-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            .add-pet-card i {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            /* Estilos para a janela modal */
+            .modal {
+                display: none;
+                position: fixed;
+                z-index: 1000;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: auto;
+                background-color: rgba(0, 0, 0, 0.4);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .modal-content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                max-width: 500px;
+                border-radius: 10px;
+            }
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body id="section_1">
+        <header>
+            <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="/index">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="Kind Heart Charity">
+                        <span>
+                            ADOTE +
+                            <small>Amor sem limites: adote, salve uma vida.</small>
+                        </span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="/index">Tela inicial</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="index.html#section_2">Sobre Nós</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">Adote</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">Contato</a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a class="nav-link custom-btn custom-border-btn btn" href="/logout">Sair</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Catálogo de animais -->
+        
+        <div class="container">
+            <div class="row">
+                {% for animal in animais %}
+                    <div class="col-sm-4">
+                        <div class="card h-100 d-flex flex-column justify-content-between">
+                            <img class="card-img-top" src="{{ url_for('static', filename='uploads/' + animal.foto) }}" alt="{{ animal.nome }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ animal.nome }}</h5>
+                                <p class="card-text">{{ animal.descricao }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid"alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h5 class="site-footer-title mb-3">Links Rápidos</h5>
+                    <ul class="footer-menu">
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja um Voluntário</a></li>
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja Nosso Parceiro</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <h5 class="site-footer-title mb-3">Contato</h5>
+                    <p class="text-white d-flex mb-2">
+                        <i class="bi-telephone me-2"></i>
+                        <a href="tel: 120-240-9600" class="site-footer-link">000-000-0000</a>
+                    </p>
+                    <p class="text-white d-flex">
+                        <i class="bi-envelope me-2"></i>
+                        <a href="mailto:info@yourgmail.com" class="site-footer-link">adotemais@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="site-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7 col-12">
+                        <p class="copyright-text mb-0"> ETE ADVOGADO JOSE DAVID GIL RODRIGUES</p>
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                        <ul class="social-icons">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
 </html>

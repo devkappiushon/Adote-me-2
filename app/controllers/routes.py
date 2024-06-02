@@ -19,6 +19,8 @@ def index():
 
 @app.route("/cadastro", methods=["GET", "POST"])
 def cadastro():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         if request.method == "POST":
@@ -34,6 +36,8 @@ def cadastro():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         if request.method == 'POST':
@@ -69,6 +73,7 @@ def registro():
         foto.save(os.path.join(app.config['UPLOAD_FOLDER'], foto_filename))
         animal = Animal(
             nome=form.nome.data,
+            raca=form.raca.data,
             especie=form.especie.data,
             cor=form.cor.data,
             idade=form.idade.data,
@@ -79,13 +84,13 @@ def registro():
         db.session.add(animal)
         db.session.commit()
         return redirect(url_for('index'))
-    return render_template('registro.html', form=form)
+    return render_template('registro.html', form=form, user=current_user)
 
 
 @app.route('/adotar')
 def adotar():
-    animals = Animal.query.all()
-    return render_template('adotar.html', animals=animals)
+    animais = Animal.query.all()  # Busque todos os animais do banco de dados
+    return render_template('adotar.html', animais=animais)
 
 
 

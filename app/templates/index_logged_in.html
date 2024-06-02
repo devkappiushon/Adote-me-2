@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='uploads/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='uploads/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='uploads/favicon-16x16.png') }}">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -71,9 +73,9 @@
 
                         <a class="nav-link custom-btn custom-border-btn btn" href="/logout" onclick="logout()"">Sair</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="nav-link click-scroll">{{ user.name }}</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

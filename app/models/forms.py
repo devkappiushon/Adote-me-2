@@ -35,7 +35,12 @@ class AnimalForm(FlaskForm):
     especie = StringField('Espécie', validators=[DataRequired(), Length(max=50)])
     cor = StringField('Cor', validators=[DataRequired(), Length(max=50)])
     idade = IntegerField('Idade', validators=[DataRequired()])
+    
+    def validate_idade(form, field):
+        if field.data < 0:
+            raise ValidationError("A idade não pode ser negativa.")
+        
     descricao = TextAreaField('Descrição', validators=[DataRequired()])
-    foto = FileField('Foto', validators=[FileRequired(), FileAllowed(['jpg', 'png'], 'Arquivo Não Suportado')])
+    foto = FileField('Foto', validators=[FileRequired(), FileAllowed(['jpeg','jpg', 'png'], 'Arquivo Não Suportado')])
     esterilizado = BooleanField('Esterilizado')
     submit = SubmitField('Registrar')

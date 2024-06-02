@@ -3,10 +3,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='uploads/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='uploads/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='uploads/favicon-16x16.png') }}">
     <title>ADOTEMAIS</title>
+    <!-- CSS FILES -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet">
+    <style>
+        .register-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .register-box {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .register-box h2 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+
+        .form-control, .form-control-file {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        .form-control:focus, .form-control-file:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .custom-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+        }
+
+        .custom-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.875em;
+        }
+    </style>
 </head>
-<body>
+<body id="section_1">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-light shadow-lg">
+            <div class="container">
+                <a class="navbar-brand" href="/index">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="Kind Heart Charity">
+                    <span>
+                        ADOTE +
+                        <small>Amor sem limites: adote, salve uma vida.</small>
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="index.html">Tela inicial</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_2">Sobre Nós</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_3">Adote</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link click-scroll" href="#section_4">Contato</a>
+                        </li>
+                        <li class="nav-item ms-3">
+
+                            <script>
+                                function logout() {
+                                    alert("Estamos desconectando você");
+                                    setTimeout(function(){ window.location.href = "/"; }, 2000);
+                                }
+                                </script>
+    
+                            <a class="nav-link custom-btn custom-border-btn btn" href="/logout" onclick="logout()"">Sair</a>
+                        </li>
+                        <!-- <li>
+                            <a class="nav-link click-scroll">{{ user.name }}</a>
+                        </li> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div class="register-container">
         <div class="register-box">
             <h2>Cadastre Seu Animal</h2>
@@ -17,7 +139,7 @@
                     {{ form.nome(class="form-control") }}
                     {% for error in form.nome.errors %}
                     <span class="text-danger">{{ error }}</span>
-                {% endfor %}
+                    {% endfor %}
                 </div>
                 <div class="form-group">
                     <label>{{ form.raca.label }}</label>
@@ -42,26 +164,74 @@
                     {{ form.idade(class="form-control") }}
                     {% for error in form.idade.errors %}
                     <span class="text-danger">{{ error }}</span>
-                {% endfor %}
+                    {% endfor %}
                 </div>
                 <div class="form-group">
                     <label>{{ form.descricao.label }}</label>
                     {{ form.descricao(class="form-control") }}
                     {% for error in form.descricao.errors %}
                     <span class="text-danger">{{ error }}</span>
-                {% endfor %}
+                    {% endfor %}
                 </div>
                 <div class="form-group">
                     <label>{{ form.foto.label }}</label>
                     {{ form.foto(class="form-control-file") }}
                     {% for error in form.foto.errors %}
                     <span class="text-danger">{{ error }}</span>
-                {% endfor %}
+                    {% endfor %}
                 </div>
-                <div class="form-group">
-                    {{ form.esterilizado() }} {{ form.esterilizado.label }}
+                <div class="form-group" style="display: flex; align-items: center;">
+                    {{ form.esterilizado() }} <label style="margin-left: 10px;">{{ form.esterilizado.label }}</label>
                 </div>
+                
                 <button type="submit" class="custom-btn">Cadastrar</button>
             </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-12 mb-4">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <h5 class="site-footer-title mb-3">Links Rápidos</h5>
+                    <ul class="footer-menu">
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja um Voluntário</a></li>
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja Nosso Parceiro</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 col-12 mx-auto">
+                    <h5 class="site-footer-title mb-3">Contato</h5>
+                    <p class="text-white d-flex mb-2">
+                        <i class="bi-telephone me-2"></i>
+                        <a href="tel: 120-240-9600" class="site-footer-link">000-000-0000</a>
+                    </p>
+                    <p class="text-white d-flex">
+                        <i class="bi-envelope me-2"></i>
+                        <a href="mailto:info@yourgmail.com" class="site-footer-link">adotemais@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="site-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-7 col-12">
+                        <p class="copyright-text mb-0"> ETE ADVOGADO JOSE DAVID GIL RODRIGUES</p>
+                    </div>
+                    <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
+                        <ul class="social-icons">
+                            <li class="social-icon-item">
+                                <a href="#" class="social-icon-link bi-instagram"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>

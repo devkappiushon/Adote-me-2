@@ -108,3 +108,24 @@ with app.app_context():
             </ul>
             {% endif %}
             {% endwith %}
+
+<!--Todos os animais disponíveis-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Animais Cadastrados</title>
+</head>
+<body>
+    <h1>Animais Cadastrados</h1>
+    <ul>
+        {% for animal in animais %}
+            <li>
+                <img src="{{ url_for('static', filename='uploads/' + animal.foto) }}" alt="{{ animal.nome }}">
+                <h2>{{ animal.nome }}</h2>
+                <p>{{ animal.descricao }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
