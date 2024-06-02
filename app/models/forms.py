@@ -22,7 +22,8 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = StringField("Email", validators=[DataRequired()])
+    email = StringField("Email", [Email(message='Email Não Encontrado') , validators.DataRequired()])
+
     password = PasswordField("Senha", validators=[DataRequired()])
 
 
@@ -30,6 +31,7 @@ class LoginForm(FlaskForm):
 #animais
 class AnimalForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired(), Length(min=4, max=20)])
+    raca = StringField('Raça', validators=[DataRequired(), Length(max=50)])
     especie = StringField('Espécie', validators=[DataRequired(), Length(max=50)])
     cor = StringField('Cor', validators=[DataRequired(), Length(max=50)])
     idade = IntegerField('Idade', validators=[DataRequired()])

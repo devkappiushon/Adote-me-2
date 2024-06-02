@@ -50,6 +50,7 @@ class Animal(db.Model):
     __tablename__= "animal" #nome da tabela já definida
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(20), nullable=False)
+    raca = db.Column(db.String(50), nullable=False)
     especie = db.Column(db.String(50), nullable=False)
     cor = db.Column(db.String(50), nullable=False)
     idade = db.Column(db.Integer, nullable=False)
@@ -57,9 +58,10 @@ class Animal(db.Model):
     esterilizado = db.Column(db.Boolean)
     foto = db.Column(db.String(200), nullable=False)
 
-    def __init__(self, nome, especie, cor, idade, descricao, foto, esterilizado):
+    def __init__(self, nome, raca, especie, cor, idade, descricao, foto, esterilizado):
         #animal("amora", "rotwalley", "branco", "12",...)
         self.nome= nome
+        self.raca= raca
         self.especie= especie
         self.cor= cor
         self.idade= idade

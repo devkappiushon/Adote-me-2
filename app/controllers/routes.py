@@ -5,12 +5,16 @@ from flask_login import login_user, logout_user, login_required, current_user
 from app.models.tables import User, Animal
 from app.models.forms import LoginForm, RegistrationForm, AnimalForm
 from werkzeug.utils import secure_filename
+from werkzeug.security import check_password_hash
 import os
 
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    if current_user.is_authenticated:
+        return render_template("index_logged_in.html", user=current_user)
+    else:
+        return render_template("index.html")
 
 
 @app.route("/cadastro", methods=["GET", "POST"])
@@ -24,6 +28,7 @@ def cadastro():
             user= User(name, email, password)
             db.session.add(user)
             db.session.commit()
+        return redirect(url_for('login'))
     return render_template("cadastro.html", form=form)    
 
 
@@ -36,11 +41,11 @@ def login():
             password = request.form['password']
 
             user = User.query.filter_by(email=form.email.data).first()
-            if user and user.verify_password(password):
+            if user and check_password_hash(user.password, form.password.data):
                 login_user(user)
-                flash('Êxito ao logar!')
+                return redirect(url_for('index'))
             else:
-                flash('Falha ao logar!')
+                flash('Email ou Senha Inválidos')
         else:
             print(form.errors)           
     return render_template('login2.html', form=form)
@@ -55,7 +60,8 @@ def logout():
     return redirect(url_for("index"))
 
 @app.route('/anunciar', methods=['GET', 'POST'])
-def register_animal():
+@login_required
+def registro():
     form = AnimalForm()
     if form.validate_on_submit():
         foto = form.foto.data
