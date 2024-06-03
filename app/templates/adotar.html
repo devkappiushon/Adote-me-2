@@ -4,9 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='uploads/apple-touch-icon.png') }}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='uploads/favicon-32x32.png') }}">
-        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='uploads/favicon-16x16.png') }}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='uploads//favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='uploads/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='uploads/favicon/favicon-16x16.png') }}">
         <title>ADOTEMAIS</title>
         <!-- CSS FILES -->
         <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -153,7 +153,7 @@
                         <div class="card h-100 d-flex flex-column justify-content-between">
                             <img class="card-img-top" src="{{ url_for('static', filename='uploads/' + animal.foto) }}" alt="{{ animal.nome }}">
                             <div class="card-body">
-                                <h5 class="card-title">{{ animal.nome }}</h5>
+                                <h5 class="card-title">{{ animal.nome }}, {{ animal.idade }} anos</h5>
                                 <p class="card-text">{{ animal.descricao }}</p>
                             </div>
                         </div>

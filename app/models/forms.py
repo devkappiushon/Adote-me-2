@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, IntegerField, TextAreaField, FileField, SubmitField, ValidationError, validators, BooleanField
+from wtforms import StringField, PasswordField, IntegerField, TextAreaField, FileField, SubmitField, ValidationError, validators, BooleanField, SelectField
 from wtforms.validators import DataRequired, Email, Length
 from app.models.tables import User
 from flask_wtf.file import FileRequired, FileAllowed
@@ -32,7 +32,7 @@ class LoginForm(FlaskForm):
 class AnimalForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired(), Length(min=4, max=20)])
     raca = StringField('Raça', validators=[DataRequired(), Length(max=50)])
-    especie = StringField('Espécie', validators=[DataRequired(), Length(max=50)])
+    especie = SelectField('Espécie',  choices=[('', 'Selecione...'), ('gato', 'Gato'), ('cachorro', 'Cachorro'), ('hamster', 'Hamster')], validators=[DataRequired()])
     cor = StringField('Cor', validators=[DataRequired(), Length(max=50)])
     idade = IntegerField('Idade', validators=[DataRequired()])
     
