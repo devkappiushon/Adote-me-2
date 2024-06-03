@@ -92,5 +92,12 @@ def adotar():
     animais = Animal.query.all()  # Busque todos os animais do banco de dados
     return render_template('adotar.html', animais=animais)
 
+@app.route('/animal_detalhes/<int:animal_id>', methods=['GET'])
+def animal_detalhes(animal_id):
+    # Faça uma consulta para obter o animal pelo id
+    animal = Animal.query.get(animal_id)
+
+    # Renderize um template com os detalhes do animal
+    return render_template('animal.html', animal=animal)
 
 

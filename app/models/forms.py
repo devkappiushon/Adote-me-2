@@ -32,7 +32,7 @@ class LoginForm(FlaskForm):
 class AnimalForm(FlaskForm):
     nome = StringField('Nome', validators=[DataRequired(), Length(min=4, max=20)])
     raca = StringField('Raça', validators=[DataRequired(), Length(max=50)])
-    especie = SelectField('Espécie',  choices=[('', 'Selecione...'), ('gato', 'Gato'), ('cachorro', 'Cachorro'), ('hamster', 'Hamster')], validators=[DataRequired()])
+    especie = SelectField('Espécie',  choices=[('', 'Selecione...'), ('Gato', 'Gato'), ('Cachorro', 'Cachorro'), ('Hamster', 'Hamster')], validators=[DataRequired()])
     cor = StringField('Cor', validators=[DataRequired(), Length(max=50)])
     idade = IntegerField('Idade', validators=[DataRequired()])
     
@@ -40,7 +40,7 @@ class AnimalForm(FlaskForm):
         if field.data < 0:
             raise ValidationError("A idade não pode ser negativa.")
         
-    descricao = TextAreaField('Descrição', validators=[DataRequired()])
+    descricao = TextAreaField('Descrição', validators=[DataRequired(), Length(max=100)])
     foto = FileField('Foto', validators=[FileRequired(), FileAllowed(['jpeg','jpg', 'png'], 'Arquivo Não Suportado')])
     esterilizado = BooleanField('Esterilizado')
     submit = SubmitField('Registrar')

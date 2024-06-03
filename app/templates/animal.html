@@ -145,23 +145,16 @@
         </header>
 
         <!-- Catálogo de animais -->
-        
-        <div class="container">
-            <div class="row">
-                {% for animal in animais %}
-                    <div class="col-sm-4">
-                        <a href="{{ url_for('animal_detalhes', animal_id=animal.id) }}">
-                            <div class="card h-100 d-flex flex-column justify-content-between">
-                                <img class="card-img-top" src="{{ url_for('static', filename='uploads/' + animal.foto) }}" alt="{{ animal.nome }}">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ animal.nome }}, {{ animal.especie }}</h5>
-                                    <p class="card-text">{{animal.idade}} anos, {{animal.descricao}} </p>
-                                </div>
-                            </div>
-                        </div>
-                {% endfor %}
-            </div>
-        </div>
+        <h1>{{ animal.nome }}</h1>
+<p>Espécie: {{ animal.especie }}</p>
+<p>Raça: {{ animal.raca }}</p>
+<p>Pelagem: {{ animal.cor }}</p>
+<p>Idade: {{ animal.idade }}</p>
+<p>Descrição: {{ animal.descricao }}</p>
+<p>Esterilizado: {% if animal.esterilizado == 1 %}Sim{% else %}Não{% endif %}</p>
+
+<img src="{{ url_for('static', filename='uploads/' + animal.foto) }}" alt="{{ animal.nome }}">
+<a href="/adotar">Volte</a>
 
     <footer class="site-footer">
         <div class="container">
