@@ -69,3 +69,18 @@
                 <div class="form-group" style="display: flex; align-items: center;">
                     {{ form.esterilizado() }} <label style="margin-left: 10px;">{{ form.esterilizado.label }}</label>
                 </div>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="#top">Tela inicial</a>
+                    </li>
+
+
+        <!-- Catálogo de animais -->
+        <h1>{{ animal.nome }}</h1>
+        <p>Espécie: {{ animal.especie }}</p>
+        <p>Raça: {{ animal.raca }}</p>
+        <p>Pelagem: {{ animal.cor }}</p>
+        <p>Idade: {{ animal.idade }}</p>
+        <p>Descrição: {{ animal.descricao }}</p>
+        <p>Esterilizado: {% if animal.esterilizado == 1 %}Sim{% else %}Não{% endif %}</p>

@@ -48,18 +48,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#top">Tela inicial</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">Sobre Nós</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Adote</a>
+                        <a class="nav-link click-scroll" href="/index">Tela inicial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Contato</a>
+                        <a class="nav-link click-scroll" href="/index#section_3">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/anunciar">Anunciar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/adotar">Adote</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/index#section_4">Contato</a>
                     </li>
 
                     <li class="nav-item ms-3">
@@ -139,7 +140,7 @@
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="/doar" class="d-block">
+                            <a class="d-block">
                                 <img src="{{ url_for('static', filename='images/icons/hands.png') }}" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text">Ao adotar um animal, você está dando a ele uma
@@ -151,7 +152,7 @@
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="/doar" class="d-block">
+                            <a class="d-block">
                                 <img src="{{ url_for('static', filename='images/icons/heart.png') }}" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text">Adotar um animal <strong>promove a compaixão e a
@@ -163,19 +164,19 @@
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0 mb-md-4">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="/doar" class="d-block">
+                            <a class="d-block">
                                 <img src="{{ url_for('static', filename='images/icons/receive.png') }}" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text">Animais adotados muitas vezes têm uma <strong>profunda
                                         gratidão</strong> por seus novos lares, tornando-se companheiros leais e
-                                    amorosos para toda a vida. Donation</p>
+                                    amorosos para toda a vida.</p>
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
                         <div class="featured-block d-flex justify-content-center align-items-center">
-                            <a href="/doar" class="d-block">
+                            <a class="d-block">
                                 <img src="{{ url_for('static', filename='images/icons/scholarship.png') }}" class="featured-block-image img-fluid" alt="">
 
                                 <p class="featured-block-text">Ao adotar em vez de comprar um animal, <strong>você está
@@ -230,7 +231,7 @@
                         </div>
 
                         <div class="col-lg-5 col-12">
-                            <a href="#" class="me-4">Divulgar</a>
+                            <a href="/anunciar" class="me-4">Anuncie</a>
 
                             <a href="/adotar" class="custom-btn btn smoothscroll">Adotar</a>
                         </div>
@@ -272,14 +273,14 @@
                                         </div>
                                     </div>
 
-                                    <a href="/doar" class="custom-btn btn">Adotar</a>
+                                    <a href="/adotar/cachorro" class="custom-btn btn">Adotar</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
                             <div class="custom-block-wrap">
-                                <img src="{{ url_for('static', filename='images/animais/animal2.jpg') }}" class="custom-block-image img-fluid" alt="">
+                                <img src="{{ url_for('static', filename='images/animais/animal3.jpg') }}" class="custom-block-image img-fluid" alt="">
 
                                 <div class="custom-block">
                                     <div class="custom-block-body">
@@ -300,14 +301,14 @@
                                         </div>
                                     </div>
 
-                                    <a href="/doar" class="custom-btn btn">Adotar</a>
+                                    <a href="/adotar/gato" class="custom-btn btn">Adotar</a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="custom-block-wrap">
-                                <img src="{{ url_for('static', filename='images/animais/animal3.jpg') }}" class="custom-block-image img-fluid" alt="">
+                                <img src="{{ url_for('static', filename='images/animais/animal2.jpg') }}" class="custom-block-image img-fluid" alt="">
 
                                 <div class="custom-block">
                                     <div class="custom-block-body">
@@ -328,7 +329,7 @@
                                         </div>
                                     </div>
 
-                                    <a href="/doar" class="custom-btn btn">Adotar</a>
+                                    <a href="/adotar/hamster" class="custom-btn btn">Adotar</a>
                                 </div>
                             </div>
                         </div>
@@ -401,7 +402,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12 mb-4">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
+                    <a href="#top">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
+                    </a>
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
@@ -441,13 +444,13 @@
                 <div class="row">
 
                     <div class="col-lg-6 col-md-7 col-12">
-                        <p class="copyright-text mb-0"> ETE ADVOGADO JOSE DAVID GIL RODRIGUES</p>
+                        <a href=""> ETE ADVOGADO JOSE DAVID GIL RODRIGUES </a>
                     </div>
 
                     <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
-
+                        <ul class="social-icons">
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-instagram"></a>
+                                <a href="https://www.instagram.com/ete.iburajordao/?igsh=MTMybHkxcXRqanBhMw%3D%3D"" class="social-icon-link bi-instagram"></a>
                             </li>
                         </ul>
                     </div>

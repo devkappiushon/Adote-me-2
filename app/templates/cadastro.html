@@ -84,16 +84,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#top">Tela inicial</a>
+                        <a class="nav-link click-scroll" href="/index">Tela inicial</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">Sobre Nós</a>
+                        <a class="nav-link click-scroll" href="/index#section_3">Sobre Nós</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Adote</a>
+                        <a class="nav-link click-scroll" href="/anunciar">Anunciar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">Contato</a>
+                        <a class="nav-link click-scroll" href="/adotar">Adote</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link click-scroll" href="/index#section_4">Contato</a>
                     </li>
                     <li class="nav-item ms-3">
                         <a class="nav-link custom-btn custom-border-btn btn" href="/login">Entrar</a>
@@ -158,41 +161,59 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-12 mb-4">
-                    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
+                    <a href="#top">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo img-fluid" alt="">
+                    </a>
                 </div>
+
                 <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <h5 class="site-footer-title mb-3">Links Rápidos</h5>
+
                     <ul class="footer-menu">
-                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja um Voluntário</a></li>
-                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja Nosso Parceiro</a></li>
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link" ur>Seja um Voluntário
+                            </a></li>
+
+                        <li class="footer-menu-item"><a href="#" class="footer-menu-link">Seja Nosso Parceiro
+                            </a></li>
                     </ul>
                 </div>
+
                 <div class="col-lg-4 col-md-6 col-12 mx-auto">
                     <h5 class="site-footer-title mb-3">Contato</h5>
+
                     <p class="text-white d-flex mb-2">
                         <i class="bi-telephone me-2"></i>
-                        <a href="tel:000-000-0000" class="site-footer-link">000-000-0000</a>
+
+                        <a href="tel: 120-240-9600" class="site-footer-link">
+                            000-000-0000
+                        </a>
                     </p>
+
                     <p class="text-white d-flex">
                         <i class="bi-envelope me-2"></i>
-                        <a href="mailto:adotemais@gmail.com" class="site-footer-link">adotemais@gmail.com</a>
-                    </p>
+
+                        <a href="mailto:info@yourgmail.com" class="site-footer-link">
+                            adotemais@gmail.com
                 </div>
             </div>
         </div>
+
         <div class="site-footer-bottom">
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-6 col-md-7 col-12">
-                        <p class="copyright-text mb-0">ETE ADVOGADO JOSE DAVID GIL RODRIGUES</p>
+                        <a href=""> ETE ADVOGADO JOSE DAVID GIL RODRIGUES </a>
                     </div>
+
                     <div class="col-lg-6 col-md-5 col-12 d-flex justify-content-center align-items-center mx-auto">
-                        <ul class="social-icon">
+                        <ul class="social-icons">
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link bi-instagram"></a>
+                                <a href="https://www.instagram.com/ete.iburajordao/?igsh=MTMybHkxcXRqanBhMw%3D%3D"" class="social-icon-link bi-instagram"></a>
                             </li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>

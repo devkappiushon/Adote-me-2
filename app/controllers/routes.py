@@ -87,9 +87,15 @@ def registro():
     return render_template('registro.html', form=form, user=current_user)
 
 
-@app.route('/adotar')
-def adotar():
-    animais = Animal.query.all()  # Busque todos os animais do banco de dados
+@app.route('/adotar', defaults={'especie' : None})
+@app.route('/adotar/<especie>')
+def adotar(especie):
+    if especie:
+        animais = Animal.query.filter_by(especie=especie).all()
+    else:
+        animais = Animal.query.all()  # Busque todos os animais do banco de dados
+    if current_user.is_authenticated:
+        return render_template('adotar_logged_in.html', user=current_user, animais=animais)
     return render_template('adotar.html', animais=animais)
 
 @app.route('/animal_detalhes/<int:animal_id>', methods=['GET'])
