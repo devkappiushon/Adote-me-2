@@ -1,0 +1,19 @@
+app
+    Controllers
+        routes.py (Rotas/URL)
+    Models
+        forms.py(formularioshtml do flask)
+        tables.py(tabelas de dados a serem preenchidos no formulario)
+    Static(estático)
+        css
+        fonts
+        images
+        js
+        uploads
+    Templates
+        __init.py
+Migrations(migrações do flask)
+config.py(configurações da DB)
+requirements.txt(frameworks baixados)
+run.py
+storage.db(o banco de dados)
