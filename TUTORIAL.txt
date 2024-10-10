@@ -1,0 +1,6 @@
+"set-executionpolicy unrestricted" (powershell)
+python -m venv venv (ambiente virtual)
+
+./venv/scripts/activate (ativar ambiente virtual)
+
+flask run (basic)
