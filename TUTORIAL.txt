@@ -1,6 +1,8 @@
 "set-executionpolicy unrestricted" (powershell)
 python -m venv venv (ambiente virtual)
 
-./venv/scripts/activate (ativar ambiente virtual)
+./venv/scripts/activate (ativar ambiente virtual) --only if executionpolicy is unrestricted
 
 flask run (basic)
+pip insall -r requirements.txt
+pip freeze
